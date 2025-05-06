@@ -266,16 +266,16 @@ async function fetchJSON(url, options = {}) {
 	 hideUploadButton: true
       };
 
+window.WebChat.renderWebChat(
+  {
+    directLine: window.WebChat.createDirectLine({
+      domain: 'https://europe.directline.botframework.com/'
+    })
+  },
+  document.getElementById('webchat')
 
-	      window.WebChat.renderWebChat(
-		  {
-		      directLine: directLine,
-			  store,
-			  userID:userId,
-		      styleOptions
-		  },
-		  document.getElementById('webchat')
-	      );
+
+	
 })().catch(err => console.error("An error occurred: " + err));
   </script>
 </body>
