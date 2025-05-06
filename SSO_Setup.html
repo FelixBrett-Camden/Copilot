@@ -200,7 +200,6 @@ async function fetchJSON(url, options = {}) {
 					: (Math.random().toString() + Date.now().toString()).substr(0,64);
 					
    const { token } = await fetchJSON(theURL);
-   const directLine = window.WebChat.createDirectLine({ token });
    const store = WebChat.createStore({}, ({ dispatch }) => next => action => {
       const { type } = action;
       if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
@@ -269,12 +268,11 @@ async function fetchJSON(url, options = {}) {
 window.WebChat.renderWebChat(
   {
     directLine: window.WebChat.createDirectLine({
+      token: token,
       domain: 'https://europe.directline.botframework.com/'
     })
   },
-  document.getElementById('webchat')
-
-
+  document.getElementById('webchat');
 	
 })().catch(err => console.error("An error occurred: " + err));
   </script>
