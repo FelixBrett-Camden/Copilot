@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Contoso Sample Web Chat</title>
+    <title>Contoso Sample Web Chat (Edited Domain)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
     <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
@@ -224,7 +224,8 @@
                 (Math.random().toString() + Date.now().toString()).substr(0, 64);
 
             const { token } = await fetchJSON(tokenEndpoint);
-            const directLine = window.WebChat.createDirectLine({ token });
+            const directLine = window.WebChat.createDirectLine({ token, 
+                                                               Domain: 'https://europe.directline.botframework.com/'});
 
             const store = WebChat.createStore(
                 {},
