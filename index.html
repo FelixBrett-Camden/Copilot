@@ -224,8 +224,26 @@
                 (Math.random().toString() + Date.now().toString()).substr(0, 64);
 
             const { token } = await fetchJSON(tokenEndpoint);
-            const directLine = window.WebChat.createDirectLine({ token, 
-                                                               Domain: 'https://europe.directline.botframework.com/'});
+            
+fetch('https://europe.directline.botframework.com/v3/directline/tokens/generate', {
+    method: 'POST',
+    headers: {
+        'Authorization': `Bearer r3Mefp5FoPE.O48ebrxnOamVEnqnGHmxRtEHBilB5u4m0yw2_0JRQK8`
+    }
+})
+.then(response => response.json())
+.then(data => {
+    const token = data.token;
+    const directLine = window.WebChat.createDirectLine({
+        token: token,
+        domain: 'https://europe.directline.botframework.com/v3/directline'
+    });
+
+    window.WebChat.renderWebChat({
+        directLine: directLine
+    }, document.getElementById('webchat'));
+});
+
 
             const store = WebChat.createStore(
                 {},
